@@ -5,6 +5,8 @@ import { useAuthStore } from "~/domains/auth/store/useAuthStore.js";
 
 const emit = defineEmits(["featureEvent"]);
 
+const router = useRouter();
+
 const authStore = useAuthStore();
 
 const formReset = {
@@ -21,7 +23,16 @@ function handleRedirect(event) {
 }
 
 function handleSubmit() {
-  authStore.resetPassword(formReset);
+  authStore
+    .resetPassword(formReset)
+    .then(() =>
+      emit("featureEvent", {
+        action: AuthEvent.LOGIN,
+      }),
+    )
+    .catch(() =>
+      console.error("Erreur", "La réinitialisation du mot de passe  a échouée"),
+    );
 }
 </script>
 

@@ -4,6 +4,8 @@ import { useAuthStore } from "~/domains/auth/store/useAuthStore.js";
 
 const emit = defineEmits(["featureEvent"]);
 
+const router = useRouter();
+
 const authStore = useAuthStore();
 
 const formLogin = {
@@ -31,7 +33,15 @@ function handleRedirect(event) {
 }
 
 function handleSubmit() {
-  authStore.tryLogin(formLogin);
+  authStore
+    .tryLogin(formLogin)
+    .then(authStore.setUser)
+    .then(() =>
+      emit("featureEvent", {
+        action: AuthEvent.CONNECT,
+      }),
+    )
+    .catch(() => console.error("Erreur", "La connexion a échouée"));
 }
 </script>
 

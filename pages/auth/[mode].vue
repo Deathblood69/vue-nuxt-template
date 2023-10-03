@@ -26,16 +26,23 @@ const activeFeature = computed(() => features[mode.value] ?? null);
 
 function handleFeatureEvent(value) {
   const { action } = value;
+  let path;
   switch (action) {
     case AuthEvent.REGISTER:
-      router.push("/auth/register");
+      path = "/auth/register";
       break;
     case AuthEvent.LOGIN:
-      router.push("/auth/login");
+      path = "/auth/login";
       break;
     case AuthEvent.FORGOT:
-      router.push("/auth/forgot");
+      path = "/auth/forgot";
       break;
+    case AuthEvent.CONNECT:
+      path = "/";
+      break;
+  }
+  if (path) {
+    router.push(path);
   }
 }
 </script>

@@ -4,6 +4,8 @@ import { useAuthStore } from "~/domains/auth/store/useAuthStore.js";
 
 const emit = defineEmits(["featureEvent"]);
 
+const router = useRouter();
+
 const authStore = useAuthStore();
 
 const formRegister = {
@@ -23,7 +25,14 @@ function handleRedirect(event) {
 }
 
 function handleSubmit() {
-  authStore.registerUser(formRegister);
+  authStore
+    .registerUser(formRegister)
+    .then(() =>
+      emit("featureEvent", {
+        action: AuthEvent.LOGIN,
+      }),
+    )
+    .catch(() => console.error("Erreur", "L'inscription a échouée"));
 }
 </script>
 
