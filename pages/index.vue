@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup lang="ts">
+definePageMeta({
+  middleware: "auth",
+});
+</script>
 
 <template>
   <div>
@@ -6,5 +10,3 @@
     <AppAlert> This is an auto-imported component </AppAlert>
   </div>
 </template>
-
-<style scoped></style>

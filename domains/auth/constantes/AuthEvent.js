@@ -1,0 +1,5 @@
+export const AuthEvent = {
+  REGISTER: "AUTH_EVENT:REGISTER",
+  LOGIN: "AUTH_EVENT:LOGIN",
+  FORGOT: "AUTH_EVENT:FORGOT",
+};

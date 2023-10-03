@@ -1,20 +1,15 @@
 <script setup>
-const pages = ref([
-  {
-    path: "/",
-    libelle: "Home",
-  },
-]);
+const pages = ref([]);
 </script>
 
 <template>
   <header>
     <div id="container">
-      <h1 class="page">Titre</h1>
-      <nav id="container" class="page">
-        <slot>
+      <h1 class="link"><slot name="titre">Titre</slot></h1>
+      <nav id="container" class="link">
+        <slot name="pages">
           <a
-            class="page"
+            class="link"
             v-for="page in pages"
             :key="page.path"
             :href="page.path"
@@ -26,7 +21,7 @@ const pages = ref([
     </div>
 
     <div>
-      <button class="page" data-action="account">Account</button>
+      <slot name="actions" />
     </div>
   </header>
 </template>
@@ -39,7 +34,7 @@ const pages = ref([
   color: white;
 }
 
-.page {
+.link {
   margin: 16px;
 }
 

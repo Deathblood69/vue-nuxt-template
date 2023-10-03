@@ -45,15 +45,21 @@ function handleNavigate(event) {
 
 <template>
   <AppHeader @click.stop.capture="handleNavigate">
-    <button
-      class="page"
-      v-for="page in pages"
-      :key="page.path"
-      data-action="redirect"
-      :data-payload="page.path"
-    >
-      {{ page.libelle }}
-    </button>
+    <template #titre>Application</template>
+    <template #pages>
+      <button
+        class="link"
+        v-for="page in pages"
+        :key="page.path"
+        data-action="redirect"
+        :data-payload="page.path"
+      >
+        {{ page.libelle }}
+      </button>
+    </template>
+    <template #actions>
+      <button class="link" data-action="account">Account</button>
+    </template>
   </AppHeader>
 
   <main>
@@ -78,13 +84,13 @@ header {
   align-items: center;
 }
 
-.page {
+.link {
   margin: 16px;
   color: white;
   text-decoration: none;
 }
 
-.page:hover {
+.link:hover {
   opacity: 0.6;
   cursor: pointer;
 }
