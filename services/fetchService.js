@@ -1,10 +1,9 @@
 export async function fetchService(url, methode, data) {
-  const response = await fetch(url, {
+  const { data: res } = useFetch(url, {
     method: methode,
-    body: JSON.stringify(data),
+    body: data,
+    baseURL: "http://localhost:8000",
   });
-  if (!response.ok) {
-    throw new Error(`${response.status} ${response.statusText}`);
-  }
-  return await response.json();
+  console.log(res);
+  return undefined;
 }

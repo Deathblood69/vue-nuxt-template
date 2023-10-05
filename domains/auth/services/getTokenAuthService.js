@@ -1,7 +1,7 @@
 import { fetchService } from "~/services/fetchService.js";
 
 export async function getTokenAuthService(user) {
-  return fetchService("/token", "POST", {
+  return fetchService("/auth/token", "POST", {
     user,
   });
 }
