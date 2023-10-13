@@ -1,11 +1,11 @@
 export async function fetchService(url, methode, data) {
-  const {data: res} = useFetch(url, {
+  return useFetch(url, {
+    baseURL: "http://localhost:8080",
     method: methode,
     body: data,
-    baseURL: "http://localhost:8080",
-    mode: 'no-cors',
-  });
+    headers: {
+      "Content-Type": "application/json",
 
-  console.log(res);
-  return undefined;
+    },
+  });
 }
