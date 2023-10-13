@@ -1,10 +1,8 @@
-export default defineNuxtRouteMiddleware((to, from) => {
-  // isAuthenticated() is an example method verifying if a user is authenticated
-  if (isAuthenticated() === false) {
+import {useAuthStore} from "~/domains/auth/store/useAuthStore.js";
+
+export default defineNuxtRouteMiddleware(() => {
+  const authStore = useAuthStore()
+  if (!authStore.isAuthenticated()) {
     return navigateTo("/auth/login");
   }
 });
-
-function isAuthenticated() {
-  return false;
-}

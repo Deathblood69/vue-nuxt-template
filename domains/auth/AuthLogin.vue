@@ -1,10 +1,8 @@
 <script setup>
-import { AuthEvent } from "~/domains/auth/constantes/AuthEvent.js";
-import { useAuthStore } from "~/domains/auth/store/useAuthStore.js";
+import {AuthEvent} from "~/domains/auth/constantes/AuthEvent.js";
+import {useAuthStore} from "~/domains/auth/store/useAuthStore.js";
 
 const emit = defineEmits(["featureEvent"]);
-
-const router = useRouter();
 
 const authStore = useAuthStore();
 
@@ -15,7 +13,7 @@ const formLogin = {
 };
 
 function handleRedirect(event) {
-  const { action } = event.target.dataset;
+  const {action} = event.target.dataset;
   let emitAction;
   switch (action) {
     case "register":
@@ -34,24 +32,24 @@ function handleRedirect(event) {
 
 function handleSubmit() {
   authStore
-    .tryLogin(formLogin)
-    .then(authStore.setUser)
-    .then(() =>
-      emit("featureEvent", {
-        action: AuthEvent.CONNECT,
-      }),
-    )
-    .catch(() => console.error("Erreur", "La connexion a échouée"));
+      .tryLogin(formLogin)
+      .then(authStore.setUser)
+      .then(() =>
+          emit("featureEvent", {
+            action: AuthEvent.CONNECT,
+          }),
+      )
+      .catch(() => console.error("Erreur", "La connexion a échouée"));
 }
 </script>
 
 <template>
   <AppFormLogin
-    @submit.prevent.capture="handleSubmit"
-    @click.stop.capture="handleRedirect"
-    v-model:username="formLogin.username"
-    v-model:password="formLogin.password"
-    v-model:remember="formLogin.remember"
+      @submit.prevent.capture="handleSubmit"
+      @click.stop.capture="handleRedirect"
+      v-model:username="formLogin.username"
+      v-model:password="formLogin.password"
+      v-model:remember="formLogin.remember"
   >
   </AppFormLogin>
 </template>
