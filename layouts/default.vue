@@ -1,5 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import { useRouter } from "vue-router";
+import { Page } from "~/models/interfaces/Page";
 
 // ====== PARAMETRAGE ====== //
 
@@ -9,7 +10,7 @@ const router = useRouter();
 
 // ====== VARIABLES ====== //
 
-const pages = ref([
+const array: Array<Page> = [
   {
     path: "/",
     libelle: "Home",
@@ -26,7 +27,9 @@ const pages = ref([
     path: "/posts/2",
     libelle: "Post 2",
   },
-]);
+];
+
+const pages = ref(array);
 
 // ====== METHODES ====== //
 

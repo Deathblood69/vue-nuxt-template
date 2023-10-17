@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { AuthEvent } from "~/domains/auth/constantes/AuthEvent";
 import { useAuthStore } from "~/domains/auth/store/useAuthStore";
 

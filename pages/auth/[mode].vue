@@ -1,10 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { useRoute } from "#app";
 import AuthLogin from "~/domains/auth/AuthLogin.vue";
 import AuthRegister from "~/domains/auth/AuthRegister.vue";
 import AuthForgotPassword from "~/domains/auth/AuthForgotPassword.vue";
-
-import { AuthEvent } from "~/domains/auth/constantes/AuthEvent.ts";
+import { AuthEvent } from "~/domains/auth/constantes/AuthEvent";
 
 definePageMeta({
   layout: "auth",

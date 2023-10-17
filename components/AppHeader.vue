@@ -1,11 +1,16 @@
-<script setup>
-const pages = ref([]);
+<script setup lang="ts">
+import { Page } from "~/models/interfaces/Page";
+
+const array: Array<Page> = [];
+const pages = ref(array);
 </script>
 
 <template>
   <header>
     <div id="container">
-      <h1 class="link"><slot name="titre">Titre</slot></h1>
+      <h1 class="link">
+        <slot name="titre">Titre</slot>
+      </h1>
       <nav id="container" class="link">
         <slot name="pages">
           <a
