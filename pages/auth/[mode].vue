@@ -4,7 +4,7 @@ import AuthLogin from "~/domains/auth/AuthLogin.vue";
 import AuthRegister from "~/domains/auth/AuthRegister.vue";
 import AuthForgotPassword from "~/domains/auth/AuthForgotPassword.vue";
 
-import { AuthEvent } from "~/domains/auth/constantes/AuthEvent.js";
+import { AuthEvent } from "~/domains/auth/constantes/AuthEvent.ts";
 
 definePageMeta({
   layout: "auth",

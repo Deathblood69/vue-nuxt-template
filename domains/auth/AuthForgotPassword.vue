@@ -1,11 +1,9 @@
 <script setup>
 import { AuthEvent } from "~/domains/auth/constantes/AuthEvent";
 import AppFormForgotPassword from "~/components/AppFormForgotPassword.vue";
-import { useAuthStore } from "~/domains/auth/store/useAuthStore.js";
+import { useAuthStore } from "~/domains/auth/store/useAuthStore";
 
 const emit = defineEmits(["featureEvent"]);
-
-const router = useRouter();
 
 const authStore = useAuthStore();
 
@@ -30,9 +28,9 @@ function handleSubmit() {
         action: AuthEvent.LOGIN,
       }),
     )
-    .catch(() =>
-      console.error("Erreur", "La réinitialisation du mot de passe  a échouée"),
-    );
+    .catch((e) => {
+      console.error(e.message); // TODO Ajouter une alerte
+    });
 }
 </script>
 
