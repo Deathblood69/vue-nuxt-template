@@ -18,15 +18,12 @@ body {
 }
 </style>
 <style scoped>
-header {
+.v-app-bar {
   height: 25vh;
-  background-color: cornflowerblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 main {
+  margin-top: 25vh;
   min-height: 75vh;
   overflow-y: auto;
   display: flex;

@@ -15,25 +15,15 @@ const array: Array<Page> = [
     path: "/",
     libelle: "Home",
   },
-  {
-    path: "/about",
-    libelle: "About",
-  },
-  {
-    path: "/posts/1",
-    libelle: "Post 1",
-  },
-  {
-    path: "/posts/2",
-    libelle: "Post 2",
-  },
 ];
 
 const pages = ref(array);
 
 // ====== METHODES ====== //
 
-function handleNavigate(event) {
+function handleNavigate(event: {
+  target: { dataset: { action: string; payload: object } };
+}) {
   const { action, payload } = event.target.dataset;
   switch (action) {
     case "account":
@@ -79,12 +69,8 @@ body {
 }
 </style>
 <style scoped>
-header {
+.v-app-bar {
   height: 10vh;
-  background-color: cornflowerblue;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .link {

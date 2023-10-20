@@ -23,7 +23,7 @@ const features = {
 
 const activeFeature = computed(() => features[mode.value] ?? null);
 
-function handleFeatureEvent(value) {
+function handleFeatureEvent(value: { action: string }) {
   const { action } = value;
   let path;
   switch (action) {

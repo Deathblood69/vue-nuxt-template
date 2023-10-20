@@ -6,41 +6,53 @@ const pages = ref(array);
 </script>
 
 <template>
-  <header>
-    <div id="container">
-      <h1 class="link">
-        <slot name="titre">Titre</slot>
-      </h1>
-      <nav id="container" class="link">
-        <slot name="pages">
-          <a
-            class="link"
-            v-for="page in pages"
-            :key="page.path"
-            :href="page.path"
-          >
-            {{ page.libelle }}
-          </a>
-        </slot>
+  <v-app-bar id="appbar" :elevation="0">
+    <h1>
+      <slot name="titre"></slot>
+    </h1>
+    <slot name="pages">
+      <nav id="container">
+        <a
+          class="link"
+          v-for="page in pages"
+          :key="page.path"
+          :href="page.path"
+        >
+          {{ page.libelle }}
+        </a>
       </nav>
-    </div>
-
-    <div>
-      <slot name="actions" />
-    </div>
-  </header>
+    </slot>
+    <slot name="actions" />
+  </v-app-bar>
 </template>
 
 <style scoped>
+#appbar {
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#appbar h1 {
+  margin: 16px;
+  width: auto;
+  color: white;
+}
+
+#appbar nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 #container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   color: white;
-}
-
-.link {
-  margin: 16px;
 }
 
 button {
